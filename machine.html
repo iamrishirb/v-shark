@@ -79,7 +79,7 @@
               <div class="card machine-card">
                 <div class="dark-box">
                   <div class="section os">
-                    <p class="section-flag">Disk Space</p>
+                    <p class="section-flag machine-metric">Disk Space</p>
                     <h6 id="c-drive"></h6>
                     <div class="progress mt-3">
                         <div class="progress-bar disk-fill" role="progressbar" style="width: 0%" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" id="progressbar"></div>
@@ -94,10 +94,10 @@
               <div class="card machine-card">
                   <div class="dark-box">
                       <div class="section os">
-                          <p class="section-flag">CPU Utilisation</p>
-                          <h6></h6>
+                          <p class="section-flag machine-metric">CPU Utilisation</p>
+                          <h6 id="cpupercent"></h6>
                           <div class="progress mt-3">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                              <div class="progress-bar bg-warning" id="cpubar" role="progressbar" style="width: 0%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                       </div>
                   </div>
@@ -109,10 +109,10 @@
               <div class="card machine-card">
                   <div class="dark-box">
                       <div class="section os">
-                          <p class="section-flag">Free RAM</p>
-                          <h6></h6>
+                          <p class="section-flag machine-metric">Free RAM</p>
+                          <h6 id="rammb"></h6>
                           <div class="progress mt-3">
-                              <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                              <div class="progress-bar bg-primary" id="rambar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                       </div>
                   </div>
@@ -127,69 +127,87 @@
 
         <div class="col-lg-12 results-container">
 
-            <!-- Result Card -->
-            <div class="card">
-                <div class="card-body">
-                    <!-- <h5 class="card-title" >System Metrics</h5> -->
-                    <table class="table table-borderless machine-table">
-                      <tr>
-                        <td>#</td>
-                        <th>Operating System</th>
-                        <td>:</td>
-                        <td id="os"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>Local IP Address</th>
-                        <td>:</td>
-                        <td id="ip"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>Mac Address</th>
-                        <td>:</td>
-                        <td id="mac"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>Firewall Status</th>
-                        <td>:</td>
-                        <td id="firewall"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>Antivirus Status</th>
-                        <td>:</td>
-                        <td id="av"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>Windows Update Process Running</th>
-                        <td>:</td>
-                        <td id="update"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>Open Ports</th>
-                        <td>:</td>
-                        <td id="ports"></td>
-                      </tr>
-                      <!-- <tr>
-                        <td>#</td>
-                        <th>Free RAM</th>
-                        <td>:</td>
-                        <td id="ram"></td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <th>CPU Load</th>
-                        <td>:</td>
-                        <td id="cpu"></td>
-                      </tr> -->
-                    </table>
+          <!-- Result Card -->
+          <div class="card">
+            <div class="card-body">
+                <!-- <h5 class="card-title" >System Metrics</h5> -->
+                <table class="table table-borderless machine-table">
+                  <tr>
+                    <td>#</td>
+                    <th>Operating System</th>
+                    <td>:</td>
+                    <td id="os"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Local IP Address</th>
+                    <td>:</td>
+                    <td id="ip"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Mac Address</th>
+                    <td>:</td>
+                    <td id="mac"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Firewall Status</th>
+                    <td>:</td>
+                    <td id="firewall"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Is Antivirus Installed ?</th>
+                    <td>:</td>
+                    <td id="av"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Antivirus Name</th>
+                    <td>:</td>
+                    <td id="avname"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Is Antivirus Enabled ?</th>
+                    <td>:</td>
+                    <td id="avActive"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Is Antivirus Outdated ?</th>
+                    <td>:</td>
+                    <td id="avOutdated"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Windows Update Process Running</th>
+                    <td>:</td>
+                    <td id="update"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>Open Ports</th>
+                    <td>:</td>
+                    <td id="ports"></td>
+                  </tr>
+                  <!-- <tr>
+                    <td>#</td>
+                    <th>Free RAM</th>
+                    <td>:</td>
+                    <td id="ram"></td>
+                  </tr>
+                  <tr>
+                    <td>#</td>
+                    <th>CPU Load</th>
+                    <td>:</td>
+                    <td id="cpu"></td>
+                  </tr> -->
+                </table>
 
-                </div>
             </div>
+          </div>
 
         </div>
 
@@ -369,7 +387,10 @@
     }
 
     var deviceSpecificMacAddress = getQueryVariable('mac');
-
+    function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
     $(document).ready(function () {     
       $.getJSON("https://v-shark.herokuapp.com/data",function (data) {          
           $.each(data, function (key, value) {
@@ -380,11 +401,23 @@
               document.getElementById('mac').innerHTML = value.mac;
               document.getElementById('firewall').innerHTML = value.firewall_status;
               document.getElementById('av').innerHTML = value.antivirus_installed;
+              document.getElementById('avname').innerHTML = value.av_name;
+              document.getElementById('avActive').innerHTML = value.av_enabled;
+              document.getElementById('avOutdated').innerHTML = value.av_outdated;
               document.getElementById('update').innerHTML = value.update_process;
               document.getElementById('ports').innerHTML = value.openport;
               document.getElementById('c-drive').innerHTML = value.c_drive;
               document.getElementById('machineName').innerHTML = value.machinename;
+              var badJson = value.running;
+              var correctJson = badJson.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
+              var stats = JSON.parse(correctJson);
 
+
+              document.getElementById('cpupercent').innerHTML = stats.cpu + "%";
+              document.getElementById("cpubar").setAttribute('style',`width:${stats.cpu}%;`);
+              document.getElementById('rammb').innerHTML = `${ round((parseInt(stats.ur)/(1024*1024)),1)} GB /`+` ${ round((parseInt(stats.tr)/(1024*1024)),1)} GB`
+              var per = (parseInt(stats.ur) / parseInt (stats.tr))*100;
+              document.getElementById("rambar").setAttribute('style',`width:${round(per,0)}%;`);
               cDrive = value.c_drive;
               var occupied = cDrive.split('/')[0].trim().slice(0,-2);
               var total = cDrive.split('/')[1].trim().slice(0,-2);

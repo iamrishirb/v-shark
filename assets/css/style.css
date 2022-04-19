@@ -1157,6 +1157,10 @@ h1, h2, h3, h4, h5, h6 {
 .section-flag {
   color: #7e7e7e;
 }
+.machine-metric {
+  color: #a5c5fe;
+  font-size: 1.5rem;
+}
 .section h6 {
   color: #18d26e;
 }

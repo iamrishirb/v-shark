@@ -182,9 +182,9 @@
           document.getElementById('machineCount').innerHTML = machineCount;
 
           //count average V-score
-          totalvscore += value.vscore;
-          avgVscore = totalvscore / machineCount;
-          document.getElementById('avgVscore').innerHTML = avgVscore;
+          totalvscore += parseInt(value.vscore);
+          avgVscore = (totalvscore / machineCount);
+          document.getElementById('avgVscore').innerHTML = Math.round(avgVscore);
 
           $('#resultsContainer').append(machine);  
         });
